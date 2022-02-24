@@ -10,7 +10,7 @@ namespace MyContact
 {
     class ContactRepository : IContactRepository
     {
-        private string connectionString = @"Data Source=DESKTOP-SLPSJR0\ALI2012SQLINSTAN; Initial Catalog=ContactDb; Integrated Security=true;";
+        private string connectionString = @"Data Source=.\ALI2012SQLINSTAN; Initial Catalog=ContactDb; Integrated Security=true;";
         public bool Delet(int ContactID)
         {
             throw new NotImplementedException();
