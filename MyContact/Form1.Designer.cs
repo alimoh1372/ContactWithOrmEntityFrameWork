@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContactMainForm));
             this.gbSearch = new System.Windows.Forms.GroupBox();
             this.gbInfoContact = new System.Windows.Forms.GroupBox();
             this.dgContactsInfo = new System.Windows.Forms.DataGridView();
@@ -40,18 +41,17 @@
             this.Mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tlstbtnAdd = new System.Windows.Forms.ToolStripButton();
+            this.tlstbtnRefresh = new System.Windows.Forms.ToolStripButton();
             this.gbInfoContact.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgContactsInfo)).BeginInit();
+            this.contextMenuStrip2.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1237, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // gbSearch
             // 
@@ -97,7 +97,6 @@
             this.dgContactsInfo.ReadOnly = true;
             this.dgContactsInfo.Size = new System.Drawing.Size(1231, 467);
             this.dgContactsInfo.TabIndex = 0;
-            this.dgContactsInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgContactsInfo_CellContentClick);
             // 
             // ID
             // 
@@ -155,16 +154,64 @@
             this.Address.Name = "Address";
             this.Address.ReadOnly = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(181, 26);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tlstbtnAdd,
+            this.tlstbtnRefresh});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1237, 25);
+            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tlstbtnAdd
+            // 
+            this.tlstbtnAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tlstbtnAdd.Image = ((System.Drawing.Image)(resources.GetObject("tlstbtnAdd.Image")));
+            this.tlstbtnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlstbtnAdd.Name = "tlstbtnAdd";
+            this.tlstbtnAdd.Size = new System.Drawing.Size(106, 22);
+            this.tlstbtnAdd.Text = "افزودن شخص جدید";
+            this.tlstbtnAdd.Click += new System.EventHandler(this.tlstbtnAdd_Click);
+            // 
+            // tlstbtnRefresh
+            // 
+            this.tlstbtnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tlstbtnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("tlstbtnRefresh.Image")));
+            this.tlstbtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tlstbtnRefresh.Name = "tlstbtnRefresh";
+            this.tlstbtnRefresh.Size = new System.Drawing.Size(150, 22);
+            this.tlstbtnRefresh.Text = "بروزرسانی اطلاعات مخاطبین";
+            this.tlstbtnRefresh.Click += new System.EventHandler(this.tlstbtnRefresh_Click);
+            // 
             // ContactMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1237, 665);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.gbInfoContact);
             this.Controls.Add(this.gbSearch);
-            this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -175,14 +222,15 @@
             this.Load += new System.EventHandler(this.ContactMainForm_Load);
             this.gbInfoContact.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgContactsInfo)).EndInit();
+            this.contextMenuStrip2.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.GroupBox gbSearch;
         private System.Windows.Forms.GroupBox gbInfoContact;
         private System.Windows.Forms.DataGridView dgContactsInfo;
@@ -194,6 +242,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Mobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tlstbtnAdd;
+        private System.Windows.Forms.ToolStripButton tlstbtnRefresh;
     }
 }
 

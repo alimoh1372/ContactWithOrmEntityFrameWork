@@ -21,13 +21,32 @@ namespace MyContact
 
         private void ContactMainForm_Load(object sender, EventArgs e)
         {
-            DataTable tblContacts = contacts.SelectAll();
-            dgContactsInfo.DataSource = tblContacts;
+            refreshMycontactGriedview();
         }
 
-        private void dgContactsInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void tlstbtnRefresh_Click(object sender, EventArgs e)
         {
+            refreshMycontactGriedview();
+        }
+        private void tlstbtnAdd_Click(object sender, EventArgs e)
+        {
+            AddOrEditForm frmAdd = new AddOrEditForm();
+            frmAdd.Text = "افزودن شخص جدید";
+            frmAdd.ShowDialog();
+            if (frmAdd.DialogResult==DialogResult.OK)
+            {
+                refreshMycontactGriedview();
+                frmAdd.Close();
+            }
 
         }
+        private void refreshMycontactGriedview()
+        {
+            dgContactsInfo.AutoGenerateColumns = false;
+            dgContactsInfo.DataSource = contacts.SelectAll();
+        }
+
+
     }
 }
