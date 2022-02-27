@@ -206,6 +206,7 @@
             this.Name = "AddOrEditForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.AddOrEditForm_Load);
             this.gbAddOrEdit.ResumeLayout(false);
             this.gbAddOrEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDwnAge)).EndInit();

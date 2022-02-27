@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContactMainForm));
             this.gbSearch = new System.Windows.Forms.GroupBox();
             this.gbInfoContact = new System.Windows.Forms.GroupBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.dgContactsInfo = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ContactName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,25 +58,48 @@
             // gbSearch
             // 
             this.gbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbSearch.Location = new System.Drawing.Point(0, 33);
+            this.gbSearch.Location = new System.Drawing.Point(-18, 5);
             this.gbSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbSearch.Name = "gbSearch";
             this.gbSearch.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbSearch.Size = new System.Drawing.Size(1237, 123);
+            this.gbSearch.Size = new System.Drawing.Size(1237, 38);
             this.gbSearch.TabIndex = 1;
             this.gbSearch.TabStop = false;
             this.gbSearch.Text = "جست و جو";
             // 
             // gbInfoContact
             // 
-            this.gbInfoContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbInfoContact.Controls.Add(this.btnDelete);
+            this.gbInfoContact.Controls.Add(this.btnEdit);
             this.gbInfoContact.Controls.Add(this.dgContactsInfo);
-            this.gbInfoContact.Location = new System.Drawing.Point(0, 163);
+            this.gbInfoContact.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gbInfoContact.Location = new System.Drawing.Point(0, 28);
             this.gbInfoContact.Name = "gbInfoContact";
-            this.gbInfoContact.Size = new System.Drawing.Size(1237, 490);
+            this.gbInfoContact.Size = new System.Drawing.Size(1219, 609);
             this.gbInfoContact.TabIndex = 2;
             this.gbInfoContact.TabStop = false;
             this.gbInfoContact.Text = "اطلاعات مخاطبان";
+            this.gbInfoContact.Enter += new System.EventHandler(this.gbInfoContact_Enter);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(187, 547);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(356, 50);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "حذف مخاطب";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(549, 547);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(337, 50);
+            this.btnEdit.TabIndex = 1;
+            this.btnEdit.Text = "ویرایش مخاطب";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // dgContactsInfo
             // 
@@ -91,11 +116,10 @@
             this.Mobile,
             this.Email,
             this.Address});
-            this.dgContactsInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgContactsInfo.Location = new System.Drawing.Point(3, 20);
+            this.dgContactsInfo.Location = new System.Drawing.Point(0, 22);
             this.dgContactsInfo.Name = "dgContactsInfo";
             this.dgContactsInfo.ReadOnly = true;
-            this.dgContactsInfo.Size = new System.Drawing.Size(1231, 467);
+            this.dgContactsInfo.Size = new System.Drawing.Size(1219, 519);
             this.dgContactsInfo.TabIndex = 0;
             // 
             // ID
@@ -179,7 +203,7 @@
             this.tlstbtnRefresh});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1237, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1219, 25);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -199,7 +223,7 @@
             this.tlstbtnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("tlstbtnRefresh.Image")));
             this.tlstbtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlstbtnRefresh.Name = "tlstbtnRefresh";
-            this.tlstbtnRefresh.Size = new System.Drawing.Size(150, 22);
+            this.tlstbtnRefresh.Size = new System.Drawing.Size(150, 19);
             this.tlstbtnRefresh.Text = "بروزرسانی اطلاعات مخاطبین";
             this.tlstbtnRefresh.Click += new System.EventHandler(this.tlstbtnRefresh_Click);
             // 
@@ -207,7 +231,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1237, 665);
+            this.ClientSize = new System.Drawing.Size(1219, 637);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.gbInfoContact);
             this.Controls.Add(this.gbSearch);
@@ -248,6 +272,8 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tlstbtnAdd;
         private System.Windows.Forms.ToolStripButton tlstbtnRefresh;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
 
