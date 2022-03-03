@@ -49,10 +49,14 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tlstbtnAdd = new System.Windows.Forms.ToolStripButton();
             this.tlstbtnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.gbSearch1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.gbInfoContact.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgContactsInfo)).BeginInit();
             this.contextMenuStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.gbSearch1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbSearch
@@ -69,6 +73,7 @@
             // 
             // gbInfoContact
             // 
+            this.gbInfoContact.Controls.Add(this.gbSearch1);
             this.gbInfoContact.Controls.Add(this.btnDelete);
             this.gbInfoContact.Controls.Add(this.btnEdit);
             this.gbInfoContact.Controls.Add(this.dgContactsInfo);
@@ -79,7 +84,6 @@
             this.gbInfoContact.TabIndex = 2;
             this.gbInfoContact.TabStop = false;
             this.gbInfoContact.Text = "اطلاعات مخاطبان";
-            this.gbInfoContact.Enter += new System.EventHandler(this.gbInfoContact_Enter);
             // 
             // btnDelete
             // 
@@ -116,10 +120,10 @@
             this.Mobile,
             this.Email,
             this.Address});
-            this.dgContactsInfo.Location = new System.Drawing.Point(0, 22);
+            this.dgContactsInfo.Location = new System.Drawing.Point(0, 92);
             this.dgContactsInfo.Name = "dgContactsInfo";
             this.dgContactsInfo.ReadOnly = true;
-            this.dgContactsInfo.Size = new System.Drawing.Size(1219, 519);
+            this.dgContactsInfo.Size = new System.Drawing.Size(1219, 449);
             this.dgContactsInfo.TabIndex = 0;
             // 
             // ID
@@ -223,9 +227,37 @@
             this.tlstbtnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("tlstbtnRefresh.Image")));
             this.tlstbtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tlstbtnRefresh.Name = "tlstbtnRefresh";
-            this.tlstbtnRefresh.Size = new System.Drawing.Size(150, 19);
+            this.tlstbtnRefresh.Size = new System.Drawing.Size(150, 22);
             this.tlstbtnRefresh.Text = "بروزرسانی اطلاعات مخاطبین";
             this.tlstbtnRefresh.Click += new System.EventHandler(this.tlstbtnRefresh_Click);
+            // 
+            // gbSearch1
+            // 
+            this.gbSearch1.Controls.Add(this.txtSearch);
+            this.gbSearch1.Controls.Add(this.label1);
+            this.gbSearch1.Location = new System.Drawing.Point(12, 23);
+            this.gbSearch1.Name = "gbSearch1";
+            this.gbSearch1.Size = new System.Drawing.Size(1195, 63);
+            this.gbSearch1.TabIndex = 3;
+            this.gbSearch1.TabStop = false;
+            this.gbSearch1.Text = "جست و جو در نام و نام خانوادگی";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(809, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(380, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "لطفا نام یا نام خانوادگی مورد نظر خود را در کادر مقابل بنویسید....";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(528, 26);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(275, 24);
+            this.txtSearch.TabIndex = 1;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // ContactMainForm
             // 
@@ -249,6 +281,8 @@
             this.contextMenuStrip2.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.gbSearch1.ResumeLayout(false);
+            this.gbSearch1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,6 +308,9 @@
         private System.Windows.Forms.ToolStripButton tlstbtnRefresh;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.GroupBox gbSearch1;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label label1;
     }
 }
 

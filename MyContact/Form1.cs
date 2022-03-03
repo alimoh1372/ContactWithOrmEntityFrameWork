@@ -12,13 +12,11 @@ namespace MyContact
 {
     public partial class ContactMainForm : Form
     {
-        IContactRepository contacts;
+        
         
         public ContactMainForm()
         {
-            InitializeComponent();
-            contacts = new ContactRepository();
-            
+            InitializeComponent(); 
         }
 
         private void ContactMainForm_Load(object sender, EventArgs e)
@@ -45,9 +43,12 @@ namespace MyContact
         }
         private void refreshMycontactGriedview()
         {
-            dgContactsInfo.AutoGenerateColumns = false;
-            dgContactsInfo.Columns[0].Visible = false;
-            dgContactsInfo.DataSource = contacts.SelectAll();
+            using (ContactDbEntities db = new ContactDbEntities())
+            {
+                dgContactsInfo.AutoGenerateColumns = false;
+                dgContactsInfo.Columns[0].Visible = false;
+                dgContactsInfo.DataSource = db.Persons.ToList();
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -78,15 +79,33 @@ namespace MyContact
                 if (MessageBox.Show($"مطمئن هستید؟ {family} {name} آیا از حذف ","حذف مخاطب؟",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
                 {
                     int contactID =Convert.ToInt32( dgContactsInfo.CurrentRow.Cells[0].Value);
-                    bool result= contacts.Delet(contactID);
-                    if (result==true)
+                    
+                    using (ContactDbEntities db =new ContactDbEntities())
                     {
-                        MessageBox.Show(string.Format(".اطلاعات {0} {1} از لیست مخاطبین حذف گردید", name, family), "عملیات موفق", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Person p = new Person();
+                        p = db.Persons.Find(contactID);
+                        if (p!=null)
+                        {
+                            db.Persons.Remove(p);
+                            int result = db.SaveChanges();
+                            if (result >0)
+                            {
+                                MessageBox.Show(string.Format(".اطلاعات {0} {1} از لیست مخاطبین حذف گردید", name, family), "عملیات موفق", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                refreshMycontactGriedview();
+                            }
+                            else
+                            {
+                                MessageBox.Show(string.Format("با عرض پوزش ، به علت بروز خطا حذف انجام نگردید لطفا مجددا تلاش فرمائید.با تشکر..."), "عدم انجام عملیات", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(string.Format("اطلاعات مخاطب مورد نظر یافت نشد."), "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        
                     }
-                    else
-                    {
-                        MessageBox.Show(string.Format("با عرض پوزش ، به علت بروز خطا حذف انجام نگردید لطفا مجددا تلاش فرمائید.با تشکر...", name, family), "عدم انجام عملیات", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    
+                  
 
                 }
             }
@@ -96,9 +115,12 @@ namespace MyContact
             }
         }
 
-        private void gbInfoContact_Enter(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-
+            using (ContactDbEntities db = new ContactDbEntities())
+            {
+                dgContactsInfo.DataSource = db.Persons.Where(p => p.Name.Contains(txtSearch.Text) || p.Family.Contains(txtSearch.Text)).ToList();
+            }
         }
     }
 }
